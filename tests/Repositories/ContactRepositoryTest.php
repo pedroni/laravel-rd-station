@@ -3,7 +3,6 @@
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
 use Pedroni\RdStation\Exceptions\UnableToUpdateOrCreateEntity;
-use Pedroni\RdStation\RdStationClient;
 use Pedroni\RdStation\Repositories\ContactRepository;
 
 test('update or create contact', function () {
@@ -25,9 +24,9 @@ test('throws unable to update or create contact on failure', function () {
         'https://api.rd.services/platform/contacts/email:email@example.com' => Http::response([
             'errors' => [
                 'error_type' => 'RESOURCE_NOT_FOUND',
-                'error_message' => 'Lead not found.'
-            ]
-        ], 404)
+                'error_message' => 'Lead not found.',
+            ],
+        ], 404),
     ]);
 
     /** @var ContactRepository */
