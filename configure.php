@@ -184,7 +184,7 @@ foreach ($files as $file) {
         ':author_username' => $authorUsername,
         'author@domain.com' => $authorEmail,
         ':vendor_name' => $vendorName,
-        ':vendor_slug' => $vendorSlug,
+        'pedroni' => $vendorSlug,
         'VendorName' => $vendorNamespace,
         ':package_name' => $packageName,
         ':package_slug' => $packageSlug,
