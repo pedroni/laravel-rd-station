@@ -2,9 +2,9 @@
 
 namespace Pedroni\RdStation;
 
+use Pedroni\RdStation\Commands\RdStationCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Pedroni\RdStation\Commands\RdStationCommand;
 
 class RdStationServiceProvider extends PackageServiceProvider
 {
