@@ -1,17 +1,17 @@
 {
-    "name": "pedroni/:package_slug",
-    "description": ":package_description",
+    "name": "pedroni/rd-station",
+    "description": "Integrate your Laravel project with RD Station",
     "keywords": [
-        ":vendor_name",
+        "pedroni",
         "laravel",
-        ":package_slug"
+        "rd-station"
     ],
-    "homepage": "https://github.com/pedroni/:package_slug",
+    "homepage": "https://github.com/pedroni/rd-station",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "pedroni",
+            "email": "pedronidegodois@hotmail.com",
             "role": "Developer"
         }
     ],
@@ -34,13 +34,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Pedroni\\RdStation\\": "src",
+            "Pedroni\\RdStation\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Pedroni\\RdStation\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,15 +49,19 @@
         "test-coverage": "vendor/bin/pest --coverage"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Pedroni\\RdStation\\RdStationServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "RdStation": "Pedroni\\RdStation\\Facades\\RdStation"
             }
         }
     },
