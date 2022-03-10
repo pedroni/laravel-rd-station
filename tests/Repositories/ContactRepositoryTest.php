@@ -16,7 +16,7 @@ test('update or create contact', function () {
         fn (
             Request $request
         ) =>
-        $request->url() === 'https://api.rd.services/platform/contacts/email:email@example.com'
+        $request->url() === 'https://api.rd.services/platform/contacts/email:email@example.com?api_key=TEST_PRIVATE_TOKEN'
     );
 });
 test('throws unable to update or create contact on failure', function () {

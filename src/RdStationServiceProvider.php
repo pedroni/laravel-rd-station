@@ -2,7 +2,6 @@
 
 namespace Pedroni\RdStation;
 
-use Illuminate\Support\Facades\Http;
 use Pedroni\RdStation\Commands\RdStationCommand;
 use Pedroni\RdStation\Repositories\ContactRepository;
 use Spatie\LaravelPackageTools\Package;
@@ -29,7 +28,8 @@ class RdStationServiceProvider extends PackageServiceProvider
             RdStationClient::class,
             fn () =>
             new RdStationClient(
-                Http::baseUrl(config('rd_station.base_url'))
+                config('rd_station.base_url'),
+                config('rd_station.private_token')
             )
         );
 
