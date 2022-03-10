@@ -8,6 +8,7 @@ use Pedroni\RdStation\Repositories\ContactRepository;
 /**
  * @see \Pedroni\RdStation\RdStation
  * @method static ContactRepository contacts()
+ * @method static EventRepository events()
  */
 class RdStation extends Facade
 {

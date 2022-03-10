@@ -33,8 +33,6 @@ class RdStationServiceProvider extends PackageServiceProvider
             )
         );
 
-        $this->app->singleton('rd-station', fn () => new RdStation(
-            $this->app->make(ContactRepository::class)
-        ));
+        $this->app->singleton('rd-station', fn () => $this->app->make(RdStation::class));
     }
 }
