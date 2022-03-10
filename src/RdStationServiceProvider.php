@@ -2,7 +2,6 @@
 
 namespace Pedroni\RdStation;
 
-use Illuminate\Support\Facades\Http;
 use Pedroni\RdStation\Commands\RdStationCommand;
 use Pedroni\RdStation\Repositories\ContactRepository;
 use Spatie\LaravelPackageTools\Package;
