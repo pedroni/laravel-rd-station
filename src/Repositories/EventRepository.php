@@ -19,7 +19,7 @@ class EventRepository
         $this->client->post('platform/events', [
             'event_type' => 'CONVERSION',
             'event_family' => 'CDP',
-            'payload' => $data
+            'payload' => $data,
         ]);
     }
 }

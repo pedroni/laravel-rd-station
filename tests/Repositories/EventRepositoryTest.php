@@ -20,7 +20,7 @@ test('conversion', function () {
             ->toMatchArray([
                 'event_type' => 'CONVERSION',
                 'event_family' => 'CDP',
-                'payload' => []
+                'payload' => [],
             ]);
 
         expect($request->url())
