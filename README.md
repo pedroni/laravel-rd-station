@@ -63,7 +63,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [pedroni](https://github.com/pedroni)
+- [Lucas Pedroni](https://github.com/pedroni)
 - [All Contributors](../../contributors)
 
 ## License
