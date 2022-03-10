@@ -3,7 +3,6 @@
 namespace Pedroni\RdStation;
 
 use Pedroni\RdStation\Commands\RdStationCommand;
-use Pedroni\RdStation\Repositories\ContactRepository;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
