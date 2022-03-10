@@ -9,5 +9,5 @@ it('can access the contacts repository using facade')
     ->toBeInstanceOf(ContactRepository::class);
 
 it('can access the contacts repository using dependency injection')
-    ->expect(app()->make(RdStation::class)->contacts())
+    ->expect(fn () => app()->make(RdStation::class)->contacts())
     ->toBeInstanceOf(ContactRepository::class);

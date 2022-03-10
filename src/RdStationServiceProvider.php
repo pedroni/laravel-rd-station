@@ -29,7 +29,8 @@ class RdStationServiceProvider extends PackageServiceProvider
             RdStationClient::class,
             fn () =>
             new RdStationClient(
-                Http::baseUrl(config('rd_station.base_url'))
+                config('rd_station.base_url'),
+                config('rd_station.private_token')
             )
         );
 

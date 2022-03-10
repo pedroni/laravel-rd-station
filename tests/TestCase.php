@@ -21,5 +21,6 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
+        config()->set('rd_station.private_token', 'TEST_PRIVATE_TOKEN');
     }
 }
