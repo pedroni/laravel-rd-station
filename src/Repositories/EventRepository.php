@@ -16,7 +16,7 @@ class EventRepository
 
     public function conversion(array $data): void
     {
-        $this->client->post('platform/events', [
+        $this->client->post('platform/conversions', [
             'event_type' => 'CONVERSION',
             'event_family' => 'CDP',
             'payload' => $data,
