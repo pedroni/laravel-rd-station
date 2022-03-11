@@ -2,8 +2,10 @@
 
 namespace Pedroni\RdStation\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Routing\Router;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Pedroni\RdStation\Controllers\OAuthCallback;
+use Pedroni\RdStation\Controllers\OAuthInstall;
 use Pedroni\RdStation\RdStationServiceProvider;
 
 class TestCase extends Orchestra
@@ -31,5 +33,14 @@ class TestCase extends Orchestra
 
         $migration = include __DIR__ . '/../database/migrations/create_rd_station_config_table.php';
         $migration->up();
+    }
+
+    /**
+     * @param Router $router
+     */
+    public function defineRoutes($router)
+    {
+        $router->get('rd-station/oauth/install', OAuthInstall::class);
+        $router->get('rd-station/oauth/callback', OAuthCallback::class);
     }
 }

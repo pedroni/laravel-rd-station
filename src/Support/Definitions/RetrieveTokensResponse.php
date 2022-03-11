@@ -11,7 +11,7 @@ class RetrieveTokensResponse
     public function __construct(
         string $accessToken,
         string $refreshToken,
-        int $expiresIn,
+        int $expiresIn
     ) {
         $this->accessToken = $accessToken;
         $this->refreshToken = $refreshToken;
