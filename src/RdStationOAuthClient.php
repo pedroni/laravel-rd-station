@@ -49,13 +49,13 @@ class RdStationOAuthClient
         return $this->withToken()->delete($url, $data)->throw();
     }
 
-    public function retrieveTokens(): RetrieveTokensResponse
+    public function retrieveTokens(string $code): RetrieveTokensResponse
     {
         /** @var array{access_token: int, refresh_token: int, expires_in: int} */
         $data = $this->http->post('auth/token', [
             'client_id' => $this->config->clientId(),
             'client_secret' => $this->config->clientSecret(),
-            'code' => $this->config->code(),
+            'code' => $code,
         ])
             ->throw()
             ->json();

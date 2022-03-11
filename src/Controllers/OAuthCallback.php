@@ -19,7 +19,7 @@ class OAuthCallback
             return new JsonResponse(['message' => 'invalid code provided in the query string'], JsonResponse::HTTP_BAD_REQUEST);
         }
 
-        $response = $client->retrieveTokens();
+        $response = $client->retrieveTokens($code);
 
         $config->setCode($code)
             ->setAccessToken($response->accessToken())
