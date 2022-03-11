@@ -3,7 +3,6 @@
 namespace Pedroni\RdStation;
 
 use Pedroni\RdStation\Commands\RdStationCommand;
-use Pedroni\RdStation\Repositories\ContactRepository;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -33,14 +32,6 @@ class RdStationServiceProvider extends PackageServiceProvider
             )
         );
 
-        $this->app->singleton(
-            ContactRepository::class,
-            fn () =>
-            new ContactRepository($this->app->make(RdStationClient::class))
-        );
-
-        $this->app->singleton('rd-station', fn () => new RdStation(
-            $this->app->make(ContactRepository::class)
-        ));
+        $this->app->singleton('rd-station', fn () => $this->app->make(RdStation::class));
     }
 }

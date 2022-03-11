@@ -18,7 +18,8 @@ class RdStationClient
     ) {
         $this->baseUrl = $baseUrl;
         $this->privateToken = $privateToken;
-        $this->http = Http::baseUrl($this->baseUrl);
+        $this->http = Http::baseUrl($this->baseUrl)
+            ->contentType('application/json');
     }
 
     /**
@@ -26,7 +27,17 @@ class RdStationClient
      */
     public function patch(string $url, array $data)
     {
-        return $this->http->contentType('application/json')->patch($this->withToken($url), $data)->throw();
+        return $this->http->patch($this->withToken($url), $data)->throw();
+    }
+
+    /**
+     * @throws RequestException
+     */
+    public function post(string $url, array $data)
+    {
+        return $this->http
+            ->post($this->withToken($url), $data)
+            ->throw();
     }
 
     private function withToken(string $url): string
