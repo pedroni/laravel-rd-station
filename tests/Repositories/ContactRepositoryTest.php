@@ -18,7 +18,8 @@ test('update or create contact', function () {
         ) =>
         $request->url() === 'https://api.rd.services/platform/contacts/email:email@example.com?api_key=TEST_PRIVATE_TOKEN'
     );
-});
+})->skip();
+
 test('throws unable to update or create contact on failure', function () {
     Http::fake([
         'https://api.rd.services/platform/contacts/email:email@example.com' => Http::response([
@@ -34,4 +35,4 @@ test('throws unable to update or create contact on failure', function () {
 
     expect(fn () => $repository->updateOrCreate('email@example.com', []))
         ->toThrow(UnableToUpdateOrCreateEntity::class);
-});
+})->skip();

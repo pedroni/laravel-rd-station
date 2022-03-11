@@ -28,7 +28,8 @@ class RdStationServiceProvider extends PackageServiceProvider
             fn () =>
             new RdStationClient(
                 config('rd_station.base_url'),
-                config('rd_station.private_token')
+                config('rd_station.private_token'),
+                config('rd_station.api_key'),
             )
         );
 
