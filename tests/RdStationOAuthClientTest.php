@@ -10,8 +10,8 @@ it('retrieves tokens', function () {
             'access_token' => 'TEST_ACCESS_TOKEN',
             'refresh_token' =>
             'TEST_REFRESH_TOKEN',
-            'expires_in' => 3600
-        ], 200)
+            'expires_in' => 3600,
+        ], 200),
     ]);
 
     /** @var RdStationOAuthClient */

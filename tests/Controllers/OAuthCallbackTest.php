@@ -36,7 +36,7 @@ it('retrieves tokens and persist it on database', function () {
         'access_token' => 'TEST_ACCESS_TOKEN',
         'refresh_token' => 'TEST_REFRESH_TOKEN',
         'code' => 'TEST_CODE',
-        'expires_at' => '2022-03-11 11:00:00' // one hour after the Carbon::setTestNow
+        'expires_at' => '2022-03-11 11:00:00', // one hour after the Carbon::setTestNow
     ]);
 
     /** @var RdStationConfig */

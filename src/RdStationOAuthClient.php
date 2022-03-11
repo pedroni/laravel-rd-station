@@ -25,7 +25,7 @@ class RdStationOAuthClient
     public function withToken(): PendingRequest
     {
         return $this->http->withHeaders([
-            'Authorization' => sprintf('Bearer %s', $this->config->accessToken())
+            'Authorization' => sprintf('Bearer %s', $this->config->accessToken()),
         ]);
     }
 

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class RdStationConfig
 {
-    const TABLE = 'rd_station_config';
+    public const TABLE = 'rd_station_config';
 
     private string $apiBaseUrl;
     private string $clientId;
@@ -24,7 +24,6 @@ class RdStationConfig
         string $clientId,
         string $clientSecret,
         string $redirectPath,
-
         ?string $accessToken,
         ?string $refreshToken,
         ?string $code,
@@ -45,7 +44,7 @@ class RdStationConfig
     {
         $config = DB::table(self::TABLE)->first();
 
-        if (!$config) {
+        if (! $config) {
             DB::table(self::TABLE)->insert(['updated_at' => now()]);
             $config = [];
         }
@@ -55,7 +54,6 @@ class RdStationConfig
             $clientId,
             $clientSecret,
             $redirectPath,
-
             $config['access_token'] ?? null,
             $config['refresh_token'] ?? null,
             $config['code'] ?? null,
@@ -89,6 +87,7 @@ class RdStationConfig
 
         return $this;
     }
+
     public function code(): string
     {
         return $this->code;
@@ -143,14 +142,13 @@ class RdStationConfig
         return false;
     }
 
-
     public function persist(): self
     {
         DB::table(self::TABLE)->update([
             'access_token' => $this->accessToken(),
             'refresh_token' => $this->refreshToken(),
             'code' => $this->code(),
-            'expires_at' => $this->expiresAt()->format('Y-m-d H:i:s')
+            'expires_at' => $this->expiresAt()->format('Y-m-d H:i:s'),
         ]);
 
         return $this;
