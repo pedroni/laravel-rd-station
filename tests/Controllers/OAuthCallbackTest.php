@@ -51,7 +51,6 @@ it('retrieves tokens and persist it on database', function () {
 });
 
 it('requires code on the query string', function () {
-
     getJson('rd-station/oauth/callback')
         ->assertStatus(400)
         ->assertJson(['message' => 'invalid code provided in the query string']);
