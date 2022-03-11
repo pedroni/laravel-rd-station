@@ -40,7 +40,6 @@
     "autoload-dev": {
         "psr-4": {
             "Pedroni\\RdStation\\Tests\\": "tests",
-            "Pedroni\\RdStation\\Database\\Factories\\": "database/factories"
         }
     },
     "scripts": {

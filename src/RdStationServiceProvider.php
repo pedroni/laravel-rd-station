@@ -3,6 +3,7 @@
 namespace Pedroni\RdStation;
 
 use Pedroni\RdStation\Commands\RdStationCommand;
+use Pedroni\RdStation\Support\RdStationConfig;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -18,7 +19,7 @@ class RdStationServiceProvider extends PackageServiceProvider
         $package
             ->name('rd-station')
             ->hasConfigFile('rd_station')
-            ->hasMigration('create_rd-station_table')
+            ->hasMigration('create_rd_station_config_table')
             ->hasCommand(RdStationCommand::class);
     }
 
@@ -30,6 +31,17 @@ class RdStationServiceProvider extends PackageServiceProvider
             new RdStationClient(
                 config('rd_station.base_url'),
                 config('rd_station.api_key'),
+            )
+        );
+
+        $this->app->singleton(
+            RdStationConfig::class,
+            fn () =>
+            RdStationConfig::make(
+                config('rd_station.base_url'),
+                config('rd_station.client_id'),
+                config('rd_station.client_secret'),
+                config('rd_station.redirect_url'),
             )
         );
 
