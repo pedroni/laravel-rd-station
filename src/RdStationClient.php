@@ -10,16 +10,13 @@ class RdStationClient
 {
     private PendingRequest $http;
     private string $baseUrl;
-    private string $privateToken;
     private string $apiKey;
 
     public function __construct(
         string $baseUrl,
-        string $privateToken,
         string $apiKey
     ) {
         $this->baseUrl = $baseUrl;
-        $this->privateToken = $privateToken;
         $this->apiKey = $apiKey;
         $this->http = Http::baseUrl($this->baseUrl)
             ->contentType('application/json');
