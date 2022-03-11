@@ -10,14 +10,14 @@ class RdStationClient
 {
     private PendingRequest $http;
     private string $baseUrl;
-    private string $privateToken;
+    private string $apiKey;
 
     public function __construct(
         string $baseUrl,
-        string $privateToken
+        string $apiKey
     ) {
         $this->baseUrl = $baseUrl;
-        $this->privateToken = $privateToken;
+        $this->apiKey = $apiKey;
         $this->http = Http::baseUrl($this->baseUrl)
             ->contentType('application/json');
     }
@@ -27,7 +27,9 @@ class RdStationClient
      */
     public function patch(string $url, array $data)
     {
-        return $this->http->patch($this->withToken($url), $data)->throw();
+        return $this->http
+            ->patch($this->withApiKey($url), $data)
+            ->throw();
     }
 
     /**
@@ -36,14 +38,14 @@ class RdStationClient
     public function post(string $url, array $data)
     {
         return $this->http
-            ->post($this->withToken($url), $data)
+            ->post($this->withApiKey($url), $data)
             ->throw();
     }
 
-    private function withToken(string $url): string
+    private function withApiKey(string $url): string
     {
         $symbol = str_contains('?', $url) || str_contains('&', $url) ? '&' : '?';
 
-        return sprintf('%s%sapi_key=%s', $url, $symbol, $this->privateToken);
+        return sprintf('%s%sapi_key=%s', $url, $symbol, $this->apiKey);
     }
 }

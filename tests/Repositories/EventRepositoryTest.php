@@ -24,7 +24,7 @@ test('conversion', function () {
             ]);
 
         expect($request->url())
-            ->toBe('https://api.rd.services/platform/events?api_key=TEST_PRIVATE_TOKEN');
+            ->toBe('https://api.rd.services/platform/conversions?api_key=TEST_API_KEY');
 
         return true;
     });
