@@ -12,7 +12,7 @@ class RdStationConfig
     private string $apiBaseUrl;
     private string $clientId;
     private string $clientSecret;
-    private string $redirectUrl;
+    private string $redirectPath;
 
     private ?string $accessToken;
     private ?string $refreshToken;
@@ -23,7 +23,7 @@ class RdStationConfig
         string $apiBaseUrl,
         string $clientId,
         string $clientSecret,
-        string $redirectUrl,
+        string $redirectPath,
 
         ?string $accessToken,
         ?string $refreshToken,
@@ -33,7 +33,7 @@ class RdStationConfig
         $this->apiBaseUrl = $apiBaseUrl;
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
-        $this->redirectUrl = $redirectUrl;
+        $this->redirectPath = $redirectPath;
 
         $this->accessToken = $accessToken;
         $this->refreshToken = $refreshToken;
@@ -41,7 +41,7 @@ class RdStationConfig
         $this->expiresAt = $expiresAt;
     }
 
-    public static function make(string $apiBaseUrl, string $clientId, string $clientSecret, string $redirectUrl): self
+    public static function make(string $apiBaseUrl, string $clientId, string $clientSecret, string $redirectPath): self
     {
         $config = DB::table(self::TABLE)->first();
 
@@ -54,7 +54,7 @@ class RdStationConfig
             $apiBaseUrl,
             $clientId,
             $clientSecret,
-            $redirectUrl,
+            $redirectPath,
 
             $config['access_token'] ?? null,
             $config['refresh_token'] ?? null,
@@ -75,7 +75,7 @@ class RdStationConfig
 
     public function redirectUrl(): string
     {
-        return $this->redirectUrl;
+        return url($this->redirectPath);
     }
 
     public function apiBaseUrl(): string
@@ -109,6 +109,13 @@ class RdStationConfig
     public function setExpiresAt(CarbonImmutable $expiresAt): self
     {
         $this->expiresAt = $expiresAt;
+
+        return $this;
+    }
+
+    public function setAccessToken(string $accessToken): self
+    {
+        $this->accessToken = $accessToken;
 
         return $this;
     }

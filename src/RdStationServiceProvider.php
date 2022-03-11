@@ -41,7 +41,7 @@ class RdStationServiceProvider extends PackageServiceProvider
                 config('rd_station.base_url'),
                 config('rd_station.client_id'),
                 config('rd_station.client_secret'),
-                config('rd_station.redirect_url'),
+                config('rd_station.redirect_path'),
             )
         );
 
