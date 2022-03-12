@@ -40,9 +40,9 @@ class RdStationOAuthClient
         return $this->withToken()->post($url, $data)->throw();
     }
 
-    public function get(string $url, array $data): Response
+    public function get(string $url, array $query = []): Response
     {
-        return $this->withToken()->post($url, $data)->throw();
+        return $this->withToken()->get($url, $query)->throw();
     }
 
     public function patch(string $url, array $data): Response
@@ -50,14 +50,14 @@ class RdStationOAuthClient
         return $this->withToken()->patch($url, $data)->throw();
     }
 
-    public function delete(string $url, array $data): Response
+    public function delete(string $url): Response
     {
-        return $this->withToken()->delete($url, $data)->throw();
+        return $this->withToken()->delete($url)->throw();
     }
 
     public function retrieveTokens(string $strategy, string $value): RetrieveTokensResponse
     {
-        if (! in_array($strategy, ['refresh', 'generate'])) {
+        if (!in_array($strategy, ['refresh', 'generate'])) {
             throw new InvalidArgumentException(sprintf('RdStationOAuthClient::retrieveTokens $strategy argument was invalid found `%s` but the only strategies found are `refresh` or `generate`.', $strategy));
         }
 
@@ -78,7 +78,7 @@ class RdStationOAuthClient
     public function refreshAccessToken(): void
     {
         if ($this->config->refreshToken() === null) {
-            throw new RuntimeException('Cannot refresh access token without first installing the integration');
+            throw new RuntimeException('Cannot refresh access token without first installing the integration.');
         }
 
         $response = $this->retrieveTokens(

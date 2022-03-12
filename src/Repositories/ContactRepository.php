@@ -3,8 +3,10 @@
 namespace Pedroni\RdStation\Repositories;
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 use Pedroni\RdStation\Exceptions\UnableToUpdateOrCreateEntity;
 use Pedroni\RdStation\RdStationOAuthClient;
+use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 
 class ContactRepository
 {
@@ -16,15 +18,40 @@ class ContactRepository
         $this->client = $client;
     }
 
-    /**
-     * @throws UnableToUpdateOrCreateEntity
-     */
-    public function updateOrCreate(string $email, array $data): void
+    public function update(string $email, array $data): array
+    {
+        return $this->client
+            ->patch(sprintf('platform/contacts/email:%s', $email), $data)
+            ->json();
+    }
+
+    public function find(string $email): array
+    {
+        return $this->client
+            ->get(sprintf('platform/contacts/email:%s', $email))
+            ->json();
+    }
+
+    public function delete(string $email): void
     {
         try {
-            $this->client->patch(sprintf('platform/contacts/email:%s', $email), $data);
+            $this->client->delete(sprintf('platform/contacts/email:%s', $email));
         } catch (RequestException $exception) {
-            throw new UnableToUpdateOrCreateEntity(sprintf('Unable to update or create entity identified by %s', $email), 0, $exception);
+            if ($exception->response->status() !== HttpFoundationResponse::HTTP_NOT_FOUND) {
+                throw $exception;
+            }
         }
+    }
+
+    public function syncTags(string $email, array $tags): array
+    {
+        return $this->client
+            ->post(
+                sprintf('platform/contacts/email:%s/tag', $email),
+                [
+                    'tags' => $tags
+                ]
+            )
+            ->json();
     }
 }
