@@ -15,7 +15,7 @@ it('retrieves tokens and persist it on database', function () {
 
     mock(RdStationOAuthClient::class)
         ->shouldReceive('retrieveTokens')
-        ->with('TEST_CODE')
+        ->with('generate', 'TEST_CODE')
         ->once()
         ->andReturn(
             new RetrieveTokensResponse(
