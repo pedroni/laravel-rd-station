@@ -44,11 +44,11 @@ class TestCase extends Orchestra
         $router->get('rd-station/oauth/callback', OAuthCallback::class);
     }
 
-    public function mockConfig()
+    public function mockConfig(): RdStationConfig
     {
         $this->app->instance(
             RdStationConfig::class,
-            tap(
+            $config = tap(
                 RdStationConfig::make(
                     config('rd_station.base_url'),
                     config('rd_station.client_id'),
@@ -63,5 +63,7 @@ class TestCase extends Orchestra
                     ->persist()
             )
         );
+
+        return $config;
     }
 }

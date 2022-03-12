@@ -101,3 +101,14 @@ it('cant retrieve tokens with an invalid strategy', function () {
             'RdStationOAuthClient::retrieveTokens $strategy argument was invalid found `WRONG_STRATEGY` but the only strategies found are `refresh` or `generate`.'
         );
 });
+
+it('cant refresh access token without refresh token', function () {
+    /** @var RdStationOAuthClient */
+    $client = app()->make(RdStationOAuthClient::class);
+
+    expect(fn () => $client->refreshAccessToken())
+        ->toThrow(
+            RuntimeException::class,
+            'Cannot refresh access token without first installing the integration.'
+        );
+});
