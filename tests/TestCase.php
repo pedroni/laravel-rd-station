@@ -44,7 +44,7 @@ class TestCase extends Orchestra
         $router->get('rd-station/oauth/callback', OAuthCallback::class);
     }
 
-    public function mockRdStationConfig()
+    public function mockConfig()
     {
         $this->app->instance(
             RdStationConfig::class,

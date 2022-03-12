@@ -42,7 +42,7 @@ it('retrieves tokens', function () {
 it('refreshes token when expired', function () {
     Carbon::setTestNow($testNow = Carbon::createFromFormat('Y-m-d H:i:s', '2022-03-11 12:00:00'));
 
-    $this->mockRdStationConfig();
+    $this->mockConfig();
 
     Carbon::setTestNow($testNow->addHour()); // jump one hour in time
 
@@ -90,7 +90,7 @@ it('refreshes token when expired', function () {
 });
 
 it('cant retrieve tokens with an invalid strategy', function () {
-    $this->mockRdStationConfig();
+    $this->mockConfig();
 
     /** @var RdStationOAuthClient */
     $client = app()->make(RdStationOAuthClient::class);

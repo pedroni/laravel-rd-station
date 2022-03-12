@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Http;
 use Pedroni\RdStation\Repositories\EventRepository;
 
 test('conversion', function () {
-    $this->mockRdStationConfig();
+    $this->mockConfig();
 
     Http::fake();
 

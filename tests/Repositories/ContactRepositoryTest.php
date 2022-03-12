@@ -6,7 +6,7 @@ use Pedroni\RdStation\Exceptions\UnableToUpdateOrCreateEntity;
 use Pedroni\RdStation\Repositories\ContactRepository;
 
 test('update or create contact', function () {
-    $this->mockRdStationConfig();
+    $this->mockConfig();
 
     Http::fake();
 
@@ -23,7 +23,7 @@ test('update or create contact', function () {
 });
 
 test('throws unable to update or create contact on failure', function () {
-    $this->mockRdStationConfig();
+    $this->mockConfig();
 
     Http::fake([
         'https://api.rd.services/platform/contacts/email:email@example.com' => Http::response([
