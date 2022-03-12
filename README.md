@@ -1,9 +1,9 @@
 # Integrate your Laravel project with RD Station
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/pedroni/rd-station.svg?style=flat-square)](https://packagist.org/packages/pedroni/rd-station)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/pedroni/rd-station/run-tests?label=tests)](https://github.com/pedroni/rd-station/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/pedroni/rd-station/Check%20&%20fix%20styling?label=code%20style)](https://github.com/pedroni/rd-station/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/pedroni/rd-station.svg?style=flat-square)](https://packagist.org/packages/pedroni/rd-station)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/pedroni/laravel-rd-station.svg?style=flat-square)](https://packagist.org/packages/pedroni/laravel-rd-station)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/pedroni/laravel-rd-station/run-tests?label=tests)](https://github.com/pedroni/laravel-rd-station/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/pedroni/laravel-rd-station/Check%20&%20fix%20styling?label=code%20style)](https://github.com/pedroni/laravel-rd-station/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/pedroni/laravel-rd-station.svg?style=flat-square)](https://packagist.org/packages/pedroni/laravel-rd-station)
 
 In development. Feel free to open an issue requesting anything.
 
@@ -12,7 +12,7 @@ In development. Feel free to open an issue requesting anything.
 You can install the package via composer:
 
 ```bash
-composer require pedroni/rd-station
+composer require pedroni/laravel-rd-station
 ```
 
 You can publish the config file with:

@@ -1,12 +1,12 @@
 {
-    "name": "pedroni/rd-station",
+    "name": "pedroni/laravel-rd-station",
     "description": "Integrate your Laravel project with RD Station",
     "keywords": [
         "pedroni",
         "laravel",
         "rd-station"
     ],
-    "homepage": "https://github.com/pedroni/rd-station",
+    "homepage": "https://github.com/pedroni/laravel-rd-station",
     "license": "MIT",
     "authors": [
         {
