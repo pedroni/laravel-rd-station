@@ -23,7 +23,6 @@ class RdStationServiceProvider extends PackageServiceProvider
 
     public function packageRegistered()
     {
-
         $this->app->singleton(
             RdStationConfig::class,
             fn () =>
