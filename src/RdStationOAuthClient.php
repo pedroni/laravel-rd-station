@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use InvalidArgumentException;
 use Pedroni\RdStation\Support\Definitions\RetrieveTokensResponse;
 use Pedroni\RdStation\Support\RdStationConfig;
+use RuntimeException;
 
 class RdStationOAuthClient
 {
@@ -62,7 +63,7 @@ class RdStationOAuthClient
 
         $key = $strategy === 'refresh' ? 'refresh_token' : 'code';
 
-        /** @var array{access_token: int, refresh_token: int, expires_in: int} */
+        /** @var array{access_token: string, refresh_token: string, expires_in: int} */
         $data = $this->http->post('auth/token', [
             'client_id' => $this->config->clientId(),
             'client_secret' => $this->config->clientSecret(),
@@ -76,6 +77,10 @@ class RdStationOAuthClient
 
     public function refreshAccessToken(): void
     {
+        if ($this->config->refreshToken() === null) {
+            throw new RuntimeException('Cannot refresh access token without first installing the integration');
+        }
+
         $response = $this->retrieveTokens(
             'refresh',
             $this->config->refreshToken()

@@ -21,17 +21,27 @@ class RdStationServiceProvider extends PackageServiceProvider
             ->hasMigration('create_rd_station_config_table');
     }
 
-    public function packageRegistered()
+    public function packageRegistered(): void
     {
         $this->app->singleton(
             RdStationConfig::class,
-            fn () =>
-            RdStationConfig::make(
-                config('rd_station.base_url'),
-                config('rd_station.client_id'),
-                config('rd_station.client_secret'),
-                config('rd_station.redirect_path'),
-            )
+            function () {
+                /** @var string */
+                $baseUrl = config('rd_station.base_url');
+                /** @var string */
+                $clientId = config('rd_station.client_id');
+                /** @var string */
+                $clientSecret = config('rd_station.client_secret');
+                /** @var string */
+                $redirectPath = config('rd_station.redirect_path');
+
+                return RdStationConfig::make(
+                    $baseUrl,
+                    $clientId,
+                    $clientSecret,
+                    $redirectPath,
+                );
+            }
         );
 
         $this->app->singleton('rd-station', fn () => $this->app->make(RdStation::class));
