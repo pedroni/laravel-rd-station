@@ -46,7 +46,6 @@ class RdStationConfig
 
         if (! $config) {
             DB::table(self::TABLE)->insert(['updated_at' => now()]);
-            $config = [];
         }
 
         return new self(
@@ -54,9 +53,9 @@ class RdStationConfig
             $clientId,
             $clientSecret,
             $redirectPath,
-            $config['access_token'] ?? null,
-            $config['refresh_token'] ?? null,
-            $config['code'] ?? null,
+            $config->access_token ?? null,
+            $config->refresh_token ?? null,
+            $config->code ?? null,
             isset($config['expires_at']) ? CarbonImmutable::createFromFormat('Y-m-d H:i:s', $config['expires_at']) : null,
         );
     }
@@ -73,7 +72,7 @@ class RdStationConfig
 
     public function redirectUrl(): string
     {
-        return url($this->redirectPath);
+        return url($this->redirectPath, [], true);
     }
 
     public function apiBaseUrl(): string
