@@ -73,6 +73,20 @@ it('refreshes token when expired', function () {
         ->accessToken()->toBe('TEST_ACCESS_TOKEN_REFRESHED')
         ->expiresAt()->format('Y-m-d H:i:s')->toBe('2022-03-11 14:00:00') // note that now its 2pm
         ->isExpired()->toBe(true);
+
+    Http::assertSentCount(1);
+
+    Http::assertSent(function (Request $request) {
+        expect($request)
+            ->data()->toBe([
+                'client_id' => 'TEST_CLIENT_ID',
+                'client_secret' => 'TEST_CLIENT_SECRET',
+                'refresh_token' => 'TEST_REFRESH_TOKEN',
+            ])
+            ->method()->toBe('POST');
+
+        return true;
+    });
 });
 
 it('cant retrieve tokens with an invalid strategy', function () {
