@@ -2,7 +2,6 @@
 
 namespace Pedroni\RdStation;
 
-use Pedroni\RdStation\Commands\RdStationCommand;
 use Pedroni\RdStation\Support\RdStationConfig;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -19,8 +18,7 @@ class RdStationServiceProvider extends PackageServiceProvider
         $package
             ->name('rd-station')
             ->hasConfigFile('rd_station')
-            ->hasMigration('create_rd_station_config_table')
-            ->hasCommand(RdStationCommand::class);
+            ->hasMigration('create_rd_station_config_table');
     }
 
     public function packageRegistered()
