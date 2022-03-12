@@ -132,7 +132,6 @@ class RdStationConfig
         return $this->accessToken;
     }
 
-
     public function isExpired(): bool
     {
         if ($this->expiresAt()->isPast()) {
