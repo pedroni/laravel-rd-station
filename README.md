@@ -7,7 +7,7 @@
 
 In development. Feel free to open an issue requesting anything.
 
-> Expect breaking changes on public and internal classes. I recommend using a pinned version so `composer update` won't break anything.
+> Expect breaking changes on public and internal classes.
 
 ## Installation
 
