@@ -17,17 +17,14 @@ test('conversion', function () {
     // assertSent instead of returning a boolean
     Http::assertSentCount(1);
 
-    Http::assertSent(function (Request $request) {
-        expect($request->data())
-            ->toMatchArray([
+    Http::assertSent(
+        fn (Request $request) =>
+        expect($request)
+            ->data()->toMatchArray([
                 'event_type' => 'CONVERSION',
                 'event_family' => 'CDP',
                 'payload' => [],
-            ]);
-
-        expect($request->url())
-            ->toBe('https://api.rd.services/platform/conversions');
-
-        return true;
-    });
+            ])
+            ->url()->toBe('https://api.rd.services/platform/events')
+    );
 });
