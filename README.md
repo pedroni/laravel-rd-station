@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/pedroni/rd-station/Check%20&%20fix%20styling?label=code%20style)](https://github.com/pedroni/rd-station/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/pedroni/rd-station.svg?style=flat-square)](https://packagist.org/packages/pedroni/rd-station)
 
-Currently it only supports conversions using `api_key`.
+In development. Feel free to open an issue requesting anything.
 
 ## Installation
 
@@ -26,7 +26,6 @@ This is the contents of the published config file:
 ```php
 return [
     'base_url' => env('RD_STATION_BASE_URL', 'https://api.rd.services'),
-    'api_key' => env('RD_STATION_API_KEY'),
     'client_id' => env('RD_STATION_CLIENT_ID'),
     'client_secret' => env('RD_STATION_CLIENT_SECRET'),
     'redirect_path' => env('RD_STATION_REDIRECT_PATH', 'rd-station/oauth/callback'),
