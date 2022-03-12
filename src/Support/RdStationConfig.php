@@ -43,21 +43,24 @@ class RdStationConfig
 
     public static function make(string $apiBaseUrl, string $clientId, string $clientSecret, string $redirectPath): self
     {
-        $config = DB::table(self::TABLE)->first();
+        $config = (array) DB::table(self::TABLE)->first();
 
-        if (! $config) {
+        if (empty($config)) {
             DB::table(self::TABLE)->insert(['updated_at' => now()]);
         }
+
+        /** @var CarbonImmutable|null */
+        $expiresAt = isset($config['expires_at']) ? CarbonImmutable::createFromFormat('Y-m-d H:i:s', $config['expires_at']) : null;
 
         return new self(
             $apiBaseUrl,
             $clientId,
             $clientSecret,
             $redirectPath,
-            $config->access_token ?? null,
-            $config->refresh_token ?? null,
-            $config->code ?? null,
-            isset($config->expires_at) ? CarbonImmutable::createFromFormat('Y-m-d H:i:s', $config->expires_at) : null,
+            $config['access_token'] ?? null,
+            $config['refresh_token'] ?? null,
+            $config['code'] ?? null,
+            $expiresAt,
         );
     }
 
@@ -88,7 +91,7 @@ class RdStationConfig
         return $this;
     }
 
-    public function code(): string
+    public function code(): ?string
     {
         return $this->code;
     }
@@ -100,7 +103,7 @@ class RdStationConfig
         return $this;
     }
 
-    public function refreshToken(): string
+    public function refreshToken(): ?string
     {
         return $this->refreshToken;
     }
@@ -112,6 +115,11 @@ class RdStationConfig
         return $this;
     }
 
+    public function expiresAt(): CarbonImmutable
+    {
+        return $this->expiresAt === null ? now()->subSecond()->toImmutable() : $this->expiresAt;
+    }
+
     public function setAccessToken(string $accessToken): self
     {
         $this->accessToken = $accessToken;
@@ -119,23 +127,15 @@ class RdStationConfig
         return $this;
     }
 
-    public function accessToken(): string
+    public function accessToken(): ?string
     {
         return $this->accessToken;
     }
 
-    public function expiresAt(): CarbonImmutable
-    {
-        return $this->expiresAt;
-    }
 
     public function isExpired(): bool
     {
-        if ($this->expiresAt === null) {
-            return true;
-        }
-
-        if ($this->expiresAt->isPast()) {
+        if ($this->expiresAt()->isPast()) {
             return true;
         }
 

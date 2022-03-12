@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('rd_station_config', function (Blueprint $table) {
             $table->text('access_token')->nullable();

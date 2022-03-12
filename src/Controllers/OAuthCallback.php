@@ -9,7 +9,7 @@ use Pedroni\RdStation\Support\RdStationConfig;
 
 class OAuthCallback
 {
-    public function __invoke(Request $request, RdStationConfig $config, RdStationOAuthClient $client)
+    public function __invoke(Request $request, RdStationConfig $config, RdStationOAuthClient $client): JsonResponse
     {
         /** @var string|null */
         $code = $request->query('code');
