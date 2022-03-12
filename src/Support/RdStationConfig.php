@@ -45,7 +45,7 @@ class RdStationConfig
     {
         $config = DB::table(self::TABLE)->first();
 
-        if (!$config) {
+        if (! $config) {
             DB::table(self::TABLE)->insert(['updated_at' => now()]);
         }
 

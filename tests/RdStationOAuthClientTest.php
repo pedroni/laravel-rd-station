@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Http;
 use Pedroni\RdStation\RdStationOAuthClient;
 use Pedroni\RdStation\Support\RdStationConfig;
 
-use function Pest\Laravel\mock;
-use function Pest\Laravel\partialMock;
-
 it('retrieves tokens', function () {
     Http::fake([
         '*auth/token*' => Http::response([
