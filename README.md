@@ -26,13 +26,35 @@ This is the contents of the published config file:
 ```php
 return [
     'base_url' => env('RD_STATION_BASE_URL', 'https://api.rd.services'),
-    'api_key' => env('RD_STATION_API_KEY', ''),
-    'private_token' => env('RD_STATION_PRIVATE_TOKEN', ''),
-    'public_token' => env('RD_STATION_PUBLIC_TOKEN', ''),
+    'api_key' => env('RD_STATION_API_KEY'),
+    'client_id' => env('RD_STATION_CLIENT_ID'),
+    'client_secret' => env('RD_STATION_CLIENT_SECRET'),
+    'redirect_path' => env('RD_STATION_REDIRECT_PATH', 'rd-station/oauth/callback'),
 ];
 ```
 
-On your `.env` file set the `api_key` from Rd Station using the key `RD_STATION_API_KEY`
+> Make sure to add the necessary env variables.
+
+Publish migrations file:
+
+```bash
+php artisan vendor:publish --tag="rd-station-migrations"
+```
+
+> Make sure you run `php artisan migrate` after the migration has been published.
+
+Add two `GET` routes for the installation controller and the callback controller, example:
+
+```php
+// routes/web.php
+use Pedroni\RdStation\Controllers\OAuthInstall;
+use Pedroni\RdStation\Controllers\OAuthCallback;
+
+Route::get('rd-station/oauth/install', OAuthInstall::class);
+Route::get('rd-station/oauth/callback', OAuthCallback::class);
+```
+
+Access in your browser http://example.com/rd-station/oauth/install to complete the instalation.
 
 ## Usage
 
