@@ -4,6 +4,7 @@ namespace Pedroni\RdStation\Support;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\DB;
+use Pedroni\RdStation\Support\Definitions\RetrieveTokensResponse;
 
 class RdStationConfig
 {
@@ -44,7 +45,7 @@ class RdStationConfig
     {
         $config = DB::table(self::TABLE)->first();
 
-        if (! $config) {
+        if (!$config) {
             DB::table(self::TABLE)->insert(['updated_at' => now()]);
         }
 
@@ -139,6 +140,17 @@ class RdStationConfig
         }
 
         return false;
+    }
+
+    public function useResponse(RetrieveTokensResponse $response): self
+    {
+        return $this->setAccessToken($response->accessToken())
+            ->setRefreshToken($response->refreshToken())
+            ->setExpiresAt(
+                now()
+                    ->addSeconds($response->expiresIn())
+                    ->toImmutable()
+            );
     }
 
     public function persist(): self

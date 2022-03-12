@@ -17,7 +17,7 @@ it('retrieves tokens', function () {
     /** @var RdStationOAuthClient */
     $client = app()->make(RdStationOAuthClient::class);
 
-    expect($client->retrieveTokens('TEST_CODE'))
+    expect($client->retrieveTokens('generate', 'TEST_CODE'))
         ->accessToken()->toBe('TEST_ACCESS_TOKEN')
         ->refreshToken()->toBe('TEST_REFRESH_TOKEN')
         ->expiresIn()->toBe(3600);

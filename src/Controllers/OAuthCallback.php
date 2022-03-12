@@ -18,16 +18,10 @@ class OAuthCallback
             return new JsonResponse(['message' => 'invalid code provided in the query string'], JsonResponse::HTTP_BAD_REQUEST);
         }
 
-        $response = $client->retrieveTokens($code);
+        $response = $client->retrieveTokens('generate', $code);
 
         $config->setCode($code)
-            ->setAccessToken($response->accessToken())
-            ->setRefreshToken($response->refreshToken())
-            ->setExpiresAt(
-                now()
-                    ->addSeconds($response->expiresIn())
-                    ->toImmutable()
-            )
+            ->useResponse($response)
             ->persist();
 
         return new JsonResponse(['message' => 'retrieved tokens successfully']);
