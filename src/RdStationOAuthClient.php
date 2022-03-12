@@ -57,7 +57,7 @@ class RdStationOAuthClient
 
     public function retrieveTokens(string $strategy, string $value): RetrieveTokensResponse
     {
-        if (!in_array($strategy, ['refresh', 'generate'])) {
+        if (! in_array($strategy, ['refresh', 'generate'])) {
             throw new InvalidArgumentException(sprintf('RdStationOAuthClient::retrieveTokens $strategy argument was invalid found `%s` but the only strategies found are `refresh` or `generate`.', $strategy));
         }
 

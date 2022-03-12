@@ -3,8 +3,6 @@
 namespace Pedroni\RdStation\Repositories;
 
 use Illuminate\Http\Client\RequestException;
-use Illuminate\Http\Client\Response;
-use Pedroni\RdStation\Exceptions\UnableToUpdateOrCreateEntity;
 use Pedroni\RdStation\RdStationOAuthClient;
 use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 
@@ -49,7 +47,7 @@ class ContactRepository
             ->post(
                 sprintf('platform/contacts/email:%s/tag', $email),
                 [
-                    'tags' => $tags
+                    'tags' => $tags,
                 ]
             )
             ->json();

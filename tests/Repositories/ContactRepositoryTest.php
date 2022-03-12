@@ -14,12 +14,12 @@ test('update contact', function () {
     $this->mockConfig();
 
     Http::fake([
-        '*platform/contacts/email:email@example.com' => Http::response([], 200)
+        '*platform/contacts/email:email@example.com' => Http::response([], 200),
     ]);
 
     contactRepository()
         ->update('email@example.com', [
-            'name' => 'John Doe'
+            'name' => 'John Doe',
         ]);
 
     Http::assertSentCount(1);
@@ -32,7 +32,7 @@ test('update contact', function () {
             ->method()->toBe('PATCH')
             ->url()->toBe('https://api.rd.services/platform/contacts/email:email@example.com')
             ->data()->toBe([
-                'name' => 'John Doe'
+                'name' => 'John Doe',
             ])
     );
 });
@@ -44,12 +44,12 @@ test('find contact', function () {
         '*platform/contacts/email:email@example.com' => Http::response([
             'email' => 'email@example.com',
             'name' => 'John Doe',
-            'job_title' => 'CEO'
-        ], 200)
+            'job_title' => 'CEO',
+        ], 200),
     ]);
 
     $contact = contactRepository()
-        ->find('email@example.com',);
+        ->find('email@example.com', );
 
     expect($contact)->toBe([
         'email' => 'email@example.com',
@@ -73,7 +73,7 @@ test('deletes contact', function (array $body, int $status) {
     $this->mockConfig();
 
     Http::fake([
-        '*platform/contacts/email:email@example.com' => Http::response($body, $status)
+        '*platform/contacts/email:email@example.com' => Http::response($body, $status),
     ]);
 
     // we consider 404 a succesfull status code because ,
@@ -107,7 +107,7 @@ test('sync tags on contact', function () {
     $this->mockConfig();
 
     Http::fake([
-        '*platform/contacts/email:email@example.com/tag' => Http::response([], 200)
+        '*platform/contacts/email:email@example.com/tag' => Http::response([], 200),
     ]);
 
     contactRepository()
@@ -123,7 +123,7 @@ test('sync tags on contact', function () {
             ->method()->toBe('POST')
             ->url()->toBe('https://api.rd.services/platform/contacts/email:email@example.com/tag')
             ->data()->toBe([
-                'tags' => ['example-tag', 'another-tag']
+                'tags' => ['example-tag', 'another-tag'],
             ])
     );
 });
