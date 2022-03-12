@@ -25,6 +25,10 @@ class RdStationOAuthClient
 
     public function withToken(): PendingRequest
     {
+        if ($this->config->isExpired()) {
+            $this->refreshAccessToken();
+        }
+
         return $this->http->withHeaders([
             'Authorization' => sprintf('Bearer %s', $this->config->accessToken()),
         ]);
@@ -53,7 +57,7 @@ class RdStationOAuthClient
     public function retrieveTokens(string $strategy, string $value): RetrieveTokensResponse
     {
         if (!in_array($strategy, ['refresh', 'generate'])) {
-            throw new InvalidArgumentException('RdStationOAuthClient::retrieveTokens $strategy argument was invalid found `%s` but the only strategies found are `refresh` or `generate`.');
+            throw new InvalidArgumentException(sprintf('RdStationOAuthClient::retrieveTokens $strategy argument was invalid found `%s` but the only strategies found are `refresh` or `generate`.', $strategy));
         }
 
         $key = $strategy === 'refresh' ? 'refresh_token' : 'code';
@@ -68,5 +72,17 @@ class RdStationOAuthClient
             ->json();
 
         return new RetrieveTokensResponse($data['access_token'], $data['refresh_token'], (int) $data['expires_in']);
+    }
+
+    public function refreshAccessToken(): void
+    {
+        $response = $this->retrieveTokens(
+            'refresh',
+            $this->config->refreshToken()
+        );
+
+        $this->config
+            ->useResponse($response)
+            ->persist();
     }
 }
