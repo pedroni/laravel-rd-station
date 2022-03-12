@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Http;
 use Pedroni\RdStation\Repositories\EventRepository;
 
 test('conversion', function () {
+    $this->mockRdStationConfig();
+
     Http::fake();
 
     /** @var EventRepository */
@@ -24,7 +26,7 @@ test('conversion', function () {
             ]);
 
         expect($request->url())
-            ->toBe('https://api.rd.services/platform/conversions?api_key=TEST_API_KEY');
+            ->toBe('https://api.rd.services/platform/conversions');
 
         return true;
     });

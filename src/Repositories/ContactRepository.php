@@ -4,14 +4,14 @@ namespace Pedroni\RdStation\Repositories;
 
 use Illuminate\Http\Client\RequestException;
 use Pedroni\RdStation\Exceptions\UnableToUpdateOrCreateEntity;
-use Pedroni\RdStation\RdStationClient;
+use Pedroni\RdStation\RdStationOAuthClient;
 
 class ContactRepository
 {
-    private RdStationClient $client;
+    private RdStationOAuthClient $client;
 
     public function __construct(
-        RdStationClient $client
+        RdStationOAuthClient $client
     ) {
         $this->client = $client;
     }

@@ -2,14 +2,14 @@
 
 namespace Pedroni\RdStation\Repositories;
 
-use Pedroni\RdStation\RdStationClient;
+use Pedroni\RdStation\RdStationOAuthClient;
 
 class EventRepository
 {
-    private RdStationClient $client;
+    private RdStationOAuthClient $client;
 
     public function __construct(
-        RdStationClient $client
+        RdStationOAuthClient $client
     ) {
         $this->client = $client;
     }
