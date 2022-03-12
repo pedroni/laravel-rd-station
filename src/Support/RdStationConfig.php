@@ -44,7 +44,7 @@ class RdStationConfig
     {
         $config = DB::table(self::TABLE)->first();
 
-        if (! $config) {
+        if (!$config) {
             DB::table(self::TABLE)->insert(['updated_at' => now()]);
         }
 
@@ -56,7 +56,7 @@ class RdStationConfig
             $config->access_token ?? null,
             $config->refresh_token ?? null,
             $config->code ?? null,
-            isset($config['expires_at']) ? CarbonImmutable::createFromFormat('Y-m-d H:i:s', $config['expires_at']) : null,
+            isset($config->expires_at) ? CarbonImmutable::createFromFormat('Y-m-d H:i:s', $config->expires_at) : null,
         );
     }
 
