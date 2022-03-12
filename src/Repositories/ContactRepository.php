@@ -18,14 +18,14 @@ class ContactRepository
 
     public function update(string $email, array $data): array
     {
-        return $this->client
+        return (array) $this->client
             ->patch(sprintf('platform/contacts/email:%s', $email), $data)
             ->json();
     }
 
     public function find(string $email): array
     {
-        return $this->client
+        return (array) $this->client
             ->get(sprintf('platform/contacts/email:%s', $email))
             ->json();
     }
@@ -43,7 +43,7 @@ class ContactRepository
 
     public function syncTags(string $email, array $tags): array
     {
-        return $this->client
+        return (array) $this->client
             ->post(
                 sprintf('platform/contacts/email:%s/tag', $email),
                 [
