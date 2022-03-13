@@ -21,7 +21,8 @@ class RdStationOAuthClient
         $this->config = $config;
 
         $this->http = Http::baseUrl($this->config->apiBaseUrl())
-            ->contentType('application/json');
+            ->contentType('application/json')
+            ->retry(3, 1000);
     }
 
     public function withToken(): PendingRequest
@@ -30,9 +31,10 @@ class RdStationOAuthClient
             $this->refreshAccessToken();
         }
 
-        return $this->http->withHeaders([
-            'Authorization' => sprintf('Bearer %s', $this->config->accessToken()),
-        ]);
+        return $this->http
+            ->withHeaders([
+                'Authorization' => sprintf('Bearer %s', $this->config->accessToken()),
+            ]);
     }
 
     public function post(string $url, array $data): Response
@@ -57,7 +59,7 @@ class RdStationOAuthClient
 
     public function retrieveTokens(string $strategy, string $value): RetrieveTokensResponse
     {
-        if (! in_array($strategy, ['refresh', 'generate'])) {
+        if (!in_array($strategy, ['refresh', 'generate'])) {
             throw new InvalidArgumentException(sprintf('RdStationOAuthClient::retrieveTokens $strategy argument was invalid found `%s` but the only strategies found are `refresh` or `generate`.', $strategy));
         }
 
