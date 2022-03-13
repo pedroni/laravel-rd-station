@@ -44,7 +44,7 @@ class EventRepository
                 ->map(fn ($payload) => [
                     'event_type' => $eventType,
                     'event_family' => $eventFamily,
-                    'payload' => $payload
+                    'payload' => $payload,
                 ])
                 ->values()
                 ->all()

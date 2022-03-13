@@ -37,11 +37,11 @@ test('batch conversions', function () {
     $repository = app()->make(EventRepository::class);
     $repository->batchConversions([
         [
-            'email' => 'example@mail.com'
+            'email' => 'example@mail.com',
         ],
         [
-            'email' => 'another@mail.com'
-        ]
+            'email' => 'another@mail.com',
+        ],
     ]);
 
     // This is used so we can use expectations on the
@@ -59,16 +59,16 @@ test('batch conversions', function () {
                     'event_type' => 'CONVERSION',
                     'event_family' => 'CDP',
                     'payload' => [
-                        'email' => 'example@mail.com'
+                        'email' => 'example@mail.com',
                     ],
                 ],
                 [
                     'event_type' => 'CONVERSION',
                     'event_family' => 'CDP',
                     'payload' => [
-                        'email' => 'another@mail.com'
+                        'email' => 'another@mail.com',
                     ],
-                ]
+                ],
             ])
     );
 });
