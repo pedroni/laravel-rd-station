@@ -14,12 +14,40 @@ class EventRepository
         $this->client = $client;
     }
 
-    public function conversion(array $data): void
+    public function conversion(array $payload): void
     {
         $this->client->post('platform/events', [
             'event_type' => 'CONVERSION',
             'event_family' => 'CDP',
-            'payload' => $data,
+            'payload' => $payload,
         ]);
+    }
+
+    /**
+     * Event type will be `CONVERSION` and event family will be `CDP`
+     *
+     * @see https://api.rd.services/platform/events/batch
+     */
+    public function batchConversions(array $payloads): void
+    {
+        $this->batch('CONVERSION', 'CDP', $payloads);
+    }
+
+    /**
+     * @see https://api.rd.services/platform/events/batch
+     */
+    public function batch(string $eventType, string $eventFamily, array $payloads): void
+    {
+        $this->client->post(
+            'platform/events/batch',
+            collect($payloads)
+                ->map(fn ($payload) => [
+                    'event_type' => $eventType,
+                    'event_family' => $eventFamily,
+                    'payload' => $payload,
+                ])
+                ->values()
+                ->all()
+        );
     }
 }
