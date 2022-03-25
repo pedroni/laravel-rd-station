@@ -28,13 +28,13 @@ This is the contents of the published config file:
 ```php
 return [
     'base_url' => env('RD_STATION_BASE_URL', 'https://api.rd.services'),
-    'client_id' => env('RD_STATION_CLIENT_ID'),
-    'client_secret' => env('RD_STATION_CLIENT_SECRET'),
+    'client_id' => env('RD_STATION_CLIENT_ID'), // REQUIRED
+    'client_secret' => env('RD_STATION_CLIENT_SECRET'), // REQUIRED
     'redirect_path' => env('RD_STATION_REDIRECT_PATH', 'rd-station/oauth/callback'),
 ];
 ```
 
-> Make sure to add the necessary env variables.
+> 🚨 The env variable for `RD_STATION_REDIRECT_PATH` must match your route endpoint!
 
 Publish migrations file:
 
@@ -52,10 +52,12 @@ use Pedroni\RdStation\Controllers\OAuthInstall;
 use Pedroni\RdStation\Controllers\OAuthCallback;
 
 Route::get('rd-station/oauth/install', OAuthInstall::class);
-Route::get('rd-station/oauth/callback', OAuthCallback::class);
+Route::get('rd-station/oauth/callback', OAuthCallback::class); // recommended
 ```
 
-Access in your browser http://example.com/rd-station/oauth/install to complete the instalation.
+Access in your browser http://example.com/rd-station/oauth/install to initiate the instalation.
+
+> 🚨 If you change the recommended callback URL you **MUST** change the `RD_STATION_REDIRECT_PATH` env variable!
 
 ## Usage
 
