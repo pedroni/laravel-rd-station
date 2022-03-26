@@ -14,6 +14,9 @@ class EventRepository
         $this->client = $client;
     }
 
+    /**
+     * @see https://developers.rdstation.com/pt-BR/reference/events#events-post
+     */
     public function conversion(array $payload): void
     {
         $this->client->post('platform/events', [
