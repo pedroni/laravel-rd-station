@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Pedroni\RdStation\Facades\RdStation as RdStationFacade;
 use Pedroni\RdStation\RdStation;
 use Pedroni\RdStation\Repositories\ContactRepository;

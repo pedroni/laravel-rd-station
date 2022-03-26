@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Pedroni\RdStation\Repositories;
 
 use Illuminate\Http\Client\RequestException;

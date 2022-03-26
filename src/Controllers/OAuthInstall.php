@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Pedroni\RdStation\Controllers;
 
 use Illuminate\Contracts\Routing\ResponseFactory;
