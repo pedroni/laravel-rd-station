@@ -49,7 +49,7 @@ test('find contact', function () {
     ]);
 
     $contact = contactRepository()
-        ->find('email@example.com', );
+        ->find('email@example.com',);
 
     expect($contact)->toBe([
         'email' => 'email@example.com',
@@ -76,10 +76,12 @@ test('deletes contact', function (array $body, int $status) {
         '*platform/contacts/email:email@example.com' => Http::response($body, $status),
     ]);
 
+
     // we consider 404 a succesfull status code because ,
     // if could not delete then it's already deleted
     if ($status === 404 || $status >= 200 && $status < 400) {
         contactRepository()->delete('email@example.com');
+
     } else {
         expect(
             fn () => contactRepository()->delete('email@example.com')
@@ -87,7 +89,9 @@ test('deletes contact', function (array $body, int $status) {
             ->toThrow(RequestException::class);
     }
 
-    Http::assertSentCount(1);
+    // when the requests fails, it retries 3 times.
+    $requestsSent = $status >= 200 && $status < 400 ? 1 : 3;
+    Http::assertSentCount($requestsSent);
 
     Http::assertSent(
         fn (
