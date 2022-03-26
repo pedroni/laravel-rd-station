@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-rd-station` will be documented in this file.
 
+## 1.0.0 - 2022-03-26
+
+Initial release
+
 ## 0.0.2-beta: OAuth - 2022-03-12
 
 ## What's Changed
