@@ -49,7 +49,7 @@ test('find contact', function () {
     ]);
 
     $contact = contactRepository()
-        ->find('email@example.com',);
+        ->find('email@example.com', );
 
     expect($contact)->toBe([
         'email' => 'email@example.com',
@@ -81,7 +81,6 @@ test('deletes contact', function (array $body, int $status) {
     // if could not delete then it's already deleted
     if ($status === 404 || $status >= 200 && $status < 400) {
         contactRepository()->delete('email@example.com');
-
     } else {
         expect(
             fn () => contactRepository()->delete('email@example.com')
