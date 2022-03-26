@@ -53,7 +53,7 @@ Route::get('rd-station/oauth/install', OAuthInstall::class);
 Route::get('rd-station/oauth/callback', OAuthCallback::class); // recommended
 ```
 
-Open a browser window on http://yor-domain.com/rd-station/oauth/install to initiate the instalation.
+Open a browser window on http://your-domain.com/rd-station/oauth/install to initiate the instalation.
 
 > ⚠️ If you decide to change the recommended callback URL you **MUST** change the `RD_STATION_REDIRECT_PATH` variable
 
