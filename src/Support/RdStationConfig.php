@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Pedroni\RdStation\Support;
 
 use Carbon\CarbonImmutable;

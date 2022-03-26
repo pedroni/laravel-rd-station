@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use function Pest\Laravel\get;
 
 it('redirects to rd station dialog page', function () {
