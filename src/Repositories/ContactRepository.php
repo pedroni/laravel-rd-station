@@ -16,6 +16,9 @@ class ContactRepository
         $this->client = $client;
     }
 
+    /**
+     * @see https://developers.rdstation.com/pt-BR/reference/contacts#methodPatchUpsertDetails
+     */
     public function update(string $email, array $data): array
     {
         return (array) $this->client
@@ -23,6 +26,9 @@ class ContactRepository
             ->json();
     }
 
+    /**
+     * @see https://developers.rdstation.com/pt-BR/reference/contacts#methodGetDetailsemail
+     */
     public function find(string $email): array
     {
         return (array) $this->client
@@ -30,6 +36,9 @@ class ContactRepository
             ->json();
     }
 
+    /**
+     * @see https://developers.rdstation.com/pt-BR/reference/contacts#delete_email
+     */
     public function delete(string $email): void
     {
         try {
@@ -41,6 +50,9 @@ class ContactRepository
         }
     }
 
+    /**
+     * @see https://developers.rdstation.com/pt-BR/reference/contacts#create_tag_by_email
+     */
     public function syncTags(string $email, array $tags): array
     {
         return (array) $this->client
