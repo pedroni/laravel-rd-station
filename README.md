@@ -5,9 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/pedroni/laravel-rd-station/Check%20&%20fix%20styling?label=code%20style)](https://github.com/pedroni/laravel-rd-station/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/pedroni/laravel-rd-station.svg?style=flat-square)](https://packagist.org/packages/pedroni/laravel-rd-station)
 
-In development. Feel free to open an issue requesting anything.
-
-> Expect breaking changes on public and internal classes.
+This is a Laravel wrapper around the RD Station API.
 
 ## Installation
 
@@ -34,20 +32,20 @@ return [
 ];
 ```
 
-> 🚨 The env variable for `RD_STATION_REDIRECT_PATH` must match your route endpoint!
+> ⚠️ The env variable `RD_STATION_REDIRECT_PATH` **MUST** match your route endpoint that will be configured later
 
-Publish migrations file:
+Publish migrations files and run the migrations:
 
 ```bash
 php artisan vendor:publish --tag="rd-station-migrations"
+php artisan migrate
 ```
-
-> Make sure you run `php artisan migrate` after the migration has been published.
 
 Add two `GET` routes for the installation controller and the callback controller, example:
 
 ```php
 // routes/web.php
+
 use Pedroni\RdStation\Controllers\OAuthInstall;
 use Pedroni\RdStation\Controllers\OAuthCallback;
 
@@ -55,9 +53,9 @@ Route::get('rd-station/oauth/install', OAuthInstall::class);
 Route::get('rd-station/oauth/callback', OAuthCallback::class); // recommended
 ```
 
-Access in your browser http://example.com/rd-station/oauth/install to initiate the instalation.
+Open a browser window on http://yor-domain.com/rd-station/oauth/install to initiate the instalation.
 
-> 🚨 If you change the recommended callback URL you **MUST** change the `RD_STATION_REDIRECT_PATH` env variable!
+> ⚠️ If you decide to change the recommended callback URL you **MUST** change the `RD_STATION_REDIRECT_PATH` variable
 
 ## Usage
 
@@ -69,7 +67,7 @@ use Pedroni\RdStation\Facades\RdStation;
 RdStation::events()->conversion([
     'email' => 'example@mail.com',
     'conversion_identifier' => 'identifier',
-    'cf_example' => 'An example of custom field', /
+    'cf_example' => 'An example of custom field',
     'tags' => ['example-tag'],
 ]);
 ```
@@ -86,7 +84,7 @@ public function ExampleController
         $rdStation->events()->conversion([...]);
     }
     
-    public function exampleUsingTheAppContainer()
+    public function exampleUsingLaravelContainer()
     {
         $rdStation = app()->make(RdStation::class);
         
