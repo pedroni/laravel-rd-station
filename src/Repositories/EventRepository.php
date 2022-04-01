@@ -17,7 +17,7 @@ class EventRepository
     }
 
     /**
-     * @see https://developers.rdstation.com/pt-BR/reference/events#events-post
+     * @see https://developers.rdstation.com/pt-BR/reference/events#conversionEventPostDetails
      */
     public function conversion(array $payload): void
     {
@@ -31,7 +31,7 @@ class EventRepository
     /**
      * Event type will be `CONVERSION` and event family will be `CDP`
      *
-     * @see https://api.rd.services/platform/events/batch
+     * @see https://developers.rdstation.com/pt-BR/reference/events#batchEventPostDetails
      */
     public function batchConversions(array $payloads): void
     {
@@ -39,7 +39,7 @@ class EventRepository
     }
 
     /**
-     * @see https://api.rd.services/platform/events/batch
+     * @see https://developers.rdstation.com/pt-BR/reference/events#batchEventPostDetails
      */
     public function batch(string $eventType, string $eventFamily, array $payloads): void
     {
