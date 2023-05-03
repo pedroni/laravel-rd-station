@@ -23,7 +23,7 @@ class RdStationServiceProvider extends PackageServiceProvider
 
     public function packageRegistered(): void
     {
-        $this->app->singleton(
+        $this->app->bind(
             RdStationConfig::class,
             function () {
                 /** @var string */
