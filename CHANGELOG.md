@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-rd-station` will be documented in this file.
 
+## v3.0.0 - 2023-09-17
+
+Make it work with php 8.1
+
+**Full Changelog**: https://github.com/pedroni/laravel-rd-station/compare/v2.0.1...v3.0.0
+
 ## v2.0.1 - 2023-09-17
 
 ### What's Changed
