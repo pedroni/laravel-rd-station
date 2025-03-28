@@ -7,6 +7,18 @@
 
 This is a Laravel wrapper around the RD Station API.
 
+## Laravel Support Matrix
+
+This table outlines the Laravel versions supported by each version of our library.
+
+| Library Version | Laravel Version |
+| --------------- | --------------- |
+| 1.x, 2.x, 3.x   | 8.x             |
+| 4.x             | 9.x             |
+| 5.x             | 10.x            |
+| 6.x             | 11.x            |
+| 7.x             | 12.x            |
+
 ## Installation
 
 You can install the package via composer:
@@ -83,11 +95,11 @@ public function ExampleController
     {
         $rdStation->events()->conversion([...]);
     }
-    
+
     public function exampleUsingLaravelContainer()
     {
         $rdStation = app()->make(RdStation::class);
-        
+
         $rdStation->events()->conversion([...]);
     }
 }
@@ -115,8 +127,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Lucas Pedroni](https://github.com/pedroni)
-- [All Contributors](../../contributors)
+-   [Lucas Pedroni](https://github.com/pedroni)
+-   [All Contributors](../../contributors)
 
 ## License
 
