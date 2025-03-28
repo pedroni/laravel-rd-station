@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-rd-station` will be documented in this file.
 
+## v4.0.0 - 2025-03-28
+
+### What's Changed
+
+* Laravel 9 support by @pedroni in https://github.com/pedroni/laravel-rd-station/pull/27
+* Bump dependabot/fetch-metadata from 1.3.6 to 1.6.0 by @dependabot in https://github.com/pedroni/laravel-rd-station/pull/26
+
+**Full Changelog**: https://github.com/pedroni/laravel-rd-station/compare/v3.0.0...v4.0.0
+
 ## v3.0.0 - 2023-09-17
 
 Make it work with php 8.1
