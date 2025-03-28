@@ -1,8 +1,8 @@
 # Integrate your Laravel project with RD Station
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/pedroni/laravel-rd-station.svg?style=flat-square)](https://packagist.org/packages/pedroni/laravel-rd-station)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/pedroni/laravel-rd-station/run-tests?label=tests)](https://github.com/pedroni/laravel-rd-station/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/pedroni/laravel-rd-station/Check%20&%20fix%20styling?label=code%20style)](https://github.com/pedroni/laravel-rd-station/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/pedroni/laravel-rd-station/.github%2Fworkflows%2Frun-tests.yml)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/pedroni/laravel-rd-station/.github%2Fworkflows%2Fphpstan.yml?label=phpstan)
 [![Total Downloads](https://img.shields.io/packagist/dt/pedroni/laravel-rd-station.svg?style=flat-square)](https://packagist.org/packages/pedroni/laravel-rd-station)
 
 This is a Laravel wrapper around the RD Station API.
