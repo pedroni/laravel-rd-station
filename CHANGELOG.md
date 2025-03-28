@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-rd-station` will be documented in this file.
 
+## v7.0.0 - 2025-03-28
+
+### What's Changed
+
+* Laravel 12 Support by @pedroni in https://github.com/pedroni/laravel-rd-station/pull/30
+
+**Full Changelog**: https://github.com/pedroni/laravel-rd-station/compare/v6.0.0...v7.0.0
+
 ## v6.0.0 - 2025-03-28
 
 ### What's Changed
