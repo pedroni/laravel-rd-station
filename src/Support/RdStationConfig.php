@@ -136,7 +136,7 @@ class RdStationConfig
 
     public function isExpired(): bool
     {
-        if ($this->expiresAt()->isPast()) {
+        if ($this->expiresAt()->lte(now())) {
             return true;
         }
 
