@@ -14,9 +14,9 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         php: [8.1]
-        laravel: [8.*]
+        laravel: [9.*]
         stability: [prefer-stable]
-        testbench: [6.*]
+        testbench: [7.*]
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
