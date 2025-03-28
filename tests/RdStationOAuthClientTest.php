@@ -42,7 +42,7 @@ it('retrieves tokens', function () {
 });
 
 it('refreshes token when expired', function () {
-    Carbon::setTestNow($testNow = Carbon::createFromFormat('Y-m-d H:i:s', '2022-03-11 12:00:00'));
+    Carbon::setTestNow('2022-03-11T12:00:00Z');
 
     $this->mockConfig();
 
