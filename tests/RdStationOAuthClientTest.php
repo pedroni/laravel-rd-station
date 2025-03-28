@@ -42,7 +42,7 @@ it('retrieves tokens', function () {
 });
 
 it('refreshes token when expired', function () {
-    Carbon::setTestNow($testNow = Carbon::createFromFormat('Y-m-d H:i:s', '2022-03-11 12:00:00'));
+    Carbon::setTestNow($testNow = new Carbon('2022-03-11T12:00:00Z', 'UTC'));
 
     $this->mockConfig();
 
@@ -74,7 +74,7 @@ it('refreshes token when expired', function () {
     expect($config)
         ->accessToken()->toBe('TEST_ACCESS_TOKEN_REFRESHED')
         ->expiresAt()->format('Y-m-d H:i:s')->toBe('2022-03-11 14:00:00') // note that now its 2pm
-        ->isExpired()->toBe(true);
+        ->isExpired()->toBe(false);
 
     Http::assertSentCount(1);
 

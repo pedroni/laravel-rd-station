@@ -98,6 +98,7 @@ public function ExampleController
 
 ```bash
 composer test
+docker run --rm -v $(pwd):/app -w /app composer:latest bash -c "composer install && vendor/bin/pest"
 ```
 
 ## Changelog
