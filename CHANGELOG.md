@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-rd-station` will be documented in this file.
 
+## v6.0.0 - 2025-03-28
+
+### What's Changed
+
+* Laravel 11 support by @pedroni in https://github.com/pedroni/laravel-rd-station/pull/29
+
+**Full Changelog**: https://github.com/pedroni/laravel-rd-station/compare/v5.0.0...v6.0.0
+
 ## v5.0.0 - 2025-03-28
 
 ### What's Changed
