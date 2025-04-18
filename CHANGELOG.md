@@ -2,6 +2,17 @@
 
 All notable changes to `laravel-rd-station` will be documented in this file.
 
+## v7.0.1 - 2025-04-18
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.3.0 by @dependabot in https://github.com/pedroni/laravel-rd-station/pull/31
+* Bump stefanzweifel/git-auto-commit-action from 4 to 5 by @dependabot in https://github.com/pedroni/laravel-rd-station/pull/32
+* Bump ramsey/composer-install from 2 to 3 by @dependabot in https://github.com/pedroni/laravel-rd-station/pull/33
+* Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/pedroni/laravel-rd-station/pull/34
+
+**Full Changelog**: https://github.com/pedroni/laravel-rd-station/compare/v7.0.0...v7.0.1
+
 ## v7.0.0 - 2025-03-28
 
 ### What's Changed
